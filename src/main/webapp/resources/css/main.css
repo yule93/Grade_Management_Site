@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+.formtable {
+	width: 400px;
+	border: 1px solid blue;
+	margin: 50px;
+	padding: 10px;
+}
+
+.label {
+	text-align: right;
+	vertical-align: top;
+}
+
+.label1 {
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
+	vertical-align: top;
+}
+
+.label2 {
+	font-size: 14px;
+	text-align: right;
+	vertical-align: top;
+}
+
+.control {
+	margin-left: 10px;
+}
+
+.error {
+	font-size: small;
+	color: red;
+	margin-left: 10px;
+}
+
+textarea {
+	width: 300px;
+	height: 100px;
+}
+
+input[type=text] {
+	width: 300px;
+	border-width: 1px;
+	padding: 2px;
+}
+
+input[type=submit] {
+	width: 200px;
+	display: block;
+	margin: 0 auto;
+}
+
+input[type=submit]:hover {
+  background-color: #ff0080;
+}
+
