@@ -18,6 +18,14 @@ public class OfferService {
 		return offerDao.getOffers();
 	}
 	
+	public List<Offer> getYear() {
+		return offerDao.getYear();
+	}
+	
+	public List<Offer> getRegister() {
+		return offerDao.getRegisteredOffers();
+	}
+	
 	public void insert(Offer offer) {
 		offerDao.insert(offer);
 		

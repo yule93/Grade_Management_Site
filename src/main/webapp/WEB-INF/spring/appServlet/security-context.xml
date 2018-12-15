@@ -20,9 +20,12 @@
 		servlet-api-provision="true">
 		<security:intercept-url pattern="/" access="isAuthenticated()" />
 		<security:intercept-url pattern="/offers" access="isAuthenticated()" />
-		<security:intercept-url pattern="/login" access="isAuthenticated()" />
+		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/logout" access="isAuthenticated()" />
 		<security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
+		<security:intercept-url pattern="/offercreated" access="isAuthenticated()" />
+		<security:intercept-url pattern="/semesterlist" access="isAuthenticated()" />
+		<security:intercept-url pattern="/registered" access="isAuthenticated()" />
 		<security:intercept-url pattern="/resources/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login" />

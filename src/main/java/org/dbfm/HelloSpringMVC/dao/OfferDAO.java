@@ -22,13 +22,13 @@ public class OfferDAO {
 		jdbcTemplate =new JdbcTemplate(dataSource);
 	}
 	public int getRowCount() {
-		String sqlStatement = "select count(*) from classes_offers";
+		String sqlStatement = "select count(*) from classesoffers";
 		return jdbcTemplate.queryForObject(sqlStatement, Integer.class);
 	}
 	
 	//query and return a single object
 	public Offer getOffer(String name) {
-		String sqlStatement = "select * from classes_offers where name=?";
+		String sqlStatement = "select * from classesoffers where name=?";
 		
 		return jdbcTemplate.queryForObject(sqlStatement, new Object[]{name},
 				new RowMapper<Offer>() {
@@ -47,7 +47,44 @@ public class OfferDAO {
 	
 	//query and return multiple objects
 	public List<Offer> getOffers() {
-		String sqlStatement = "select * from classes_offers";
+		String sqlStatement = "select * from classesoffers";
+		
+		return jdbcTemplate.query(sqlStatement,
+				new RowMapper<Offer>() {
+					public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
+						
+						Offer offer = new Offer();
+						offer.setId(rs.getInt("id"));
+						offer.setYear(rs.getInt("year"));
+						offer.setSemester(rs.getInt("semester"));
+						offer.setCode(rs.getString("code"));
+						offer.setName(rs.getString("name"));
+						offer.setSort(rs.getString("sort"));
+						offer.setCredit(rs.getInt("credit"));
+						
+						return offer;
+					}
+				}
+		);
+	}
+	
+	public List<Offer> getYear() {
+		String sqlStatement = "select year from classesoffers";
+		
+		return jdbcTemplate.query(sqlStatement,
+				new RowMapper<Offer>() {
+					public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Offer offer = new Offer();
+						offer.setYear(rs.getInt("year"));
+						
+						return offer;
+					}
+				}
+		);
+	}
+	
+	public List<Offer> getRegisteredOffers() {
+		String sqlStatement = "select * from registeredoffers";
 		
 		return jdbcTemplate.query(sqlStatement,
 				new RowMapper<Offer>() {
@@ -69,6 +106,7 @@ public class OfferDAO {
 	}
 	
 	public boolean insert(Offer offer) {
+		
 		int year = offer.getYear();
 		String name = offer.getName();
 		int semester = offer.getSemester();
@@ -76,7 +114,7 @@ public class OfferDAO {
 		String sort = offer.getSort();
 		int credit = offer.getCredit();
 		
-		String sqlStatement = "insert into offers (year, semester, code, name, sort, credit) values (?, ?, ?, ?, ?, ?)";
+		String sqlStatement = "insert into classesoffers (year, semester, code, name, sort, credit) values (?, ?, ?, ?, ?, ?)";
 		
 		return (jdbcTemplate.update(sqlStatement, new Object[] {year, semester, code, name, sort, credit}) == 1);
 	}
@@ -91,14 +129,14 @@ public class OfferDAO {
 		String sort = offer.getSort();
 		int credit = offer.getCredit();
 		
-		String sqlStatement = "update classes_offers set name = ?, semester = ?, code = ?, name = ?, sort = ?, credit = ?, where id = ?";
+		String sqlStatement = "update classesoffers set year = ?, semester = ?, code = ?, name = ?, sort = ?, credit = ? where id = ?";
 		
 		return (jdbcTemplate.update(sqlStatement, new Object[] {year, semester, code, name, sort, credit, id}) == 1);
 	}
 	
 	public boolean delete(int id) {
 	
-		String sqlStatement = "delete from classes_offers where id = ?";
+		String sqlStatement = "delete from classesoffers where id = ?";
 		return (jdbcTemplate.update(sqlStatement, new Object[] {id}) == 1);
 	}
 }

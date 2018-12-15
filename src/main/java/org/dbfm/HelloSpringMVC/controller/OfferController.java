@@ -24,7 +24,15 @@ public class OfferController {
 		List<Offer> offers = offerservice.getCurrent();
 		model.addAttribute("offers", offers);
 		
-		return "offers";
+		return "offers";		// view 이름
+	}
+	
+	@RequestMapping("/yearoffer")
+	public String showYears (Model model) {
+		List<Offer> offers = offerservice.getYear();
+		model.addAttribute("year", offers);
+		
+		return "offers";		// view 이름
 	}
 	
 	@RequestMapping("/createoffer")
@@ -32,7 +40,7 @@ public class OfferController {
 		
 		model.addAttribute("offer", new Offer());
 		
-		return "createoffer";
+		return "createoffer";		// view 이름
 	}
 	
 	@RequestMapping("/docreate")
@@ -48,6 +56,23 @@ public class OfferController {
 		}
 		
 		offerservice.insert(offer);
-		return "offercreated";
+		return "offercreated";		// view 이름
 	}
+
+	@RequestMapping("/semesterlist")
+	public String semesterList (Model model) {
+		model.addAttribute("offer", new Offer());
+		
+		return "semesterlist";		// view 이름
+	}
+	
+	@RequestMapping("/registered")
+	public String showRegistered (Model model) {
+		
+		List<Offer> offers = offerservice.getRegister();
+		model.addAttribute("offers", offers);
+		
+		return "registered";		// view 이름
+	}
+
 }
