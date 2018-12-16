@@ -19,10 +19,10 @@ public class Offer {
 	private int id;
 	
 	@NotEmpty(message = "연도 칸은 비어선 안 됩니다.")
-	private int year;
+	private String year;
 	
 	@NotEmpty(message = "학기 칸은 비어선 안 됩니다.")
-	private int semester;
+	private String semester;
 	private String code;
 	
 	@Size(min=2, max=100, message="적어도 두 글자 이상 적어야 합니다.")
@@ -31,7 +31,7 @@ public class Offer {
 	
 	private String sort;
 
-	private int credit;
+	private String credit;
 	
 	// 아래 field들은 필요없음
 	

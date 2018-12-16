@@ -18,6 +18,10 @@ public class OfferService {
 		return offerDao.getOffers();
 	}
 	
+	public List<Offer> getCreate(String year, String semester) {
+		return offerDao.getOffers(year, semester);
+	}
+	
 	public List<Offer> getYear() {
 		return offerDao.getYear();
 	}

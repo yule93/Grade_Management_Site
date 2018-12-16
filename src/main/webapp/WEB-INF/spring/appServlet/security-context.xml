@@ -25,6 +25,7 @@
 		<security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
 		<security:intercept-url pattern="/docreate" access="isAuthenticated()" />
 		<security:intercept-url pattern="/offercreated" access="isAuthenticated()" />
+		<security:intercept-url pattern="/createdoffers" access="isAuthenticated()" />
 		<security:intercept-url pattern="/semesterlist" access="isAuthenticated()" />
 		<security:intercept-url pattern="/registered" access="isAuthenticated()" />
 		<security:intercept-url pattern="/resources/**" access="isAuthenticated()" />

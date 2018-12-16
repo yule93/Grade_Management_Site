@@ -21,10 +21,15 @@
 			<c:forEach var = "offer" items = "${offers}" >
 			
 				<tr>
+					<td> <input type ="hidden" name = "year" value = "${offer.year}"/> </td>
+					<td> <input type ="hidden" name = "semester" value = "${offer.semester}"/> </td>
+					
 					<td class = "can1"> <c:out value = "${offer.year}"> </c:out> </td>
 					<td class = "can1"> <c:out value = "${offer.semester}"/> </td>
 					<td class = "can1"> <c:out value = "${offer.credit}"/> </td>
-					<td class = "can1"> <a href = "${pageContext.request.contextPath}/offers"> 링크 보기 </a> </td>
+					<td class = "can1">
+					<a href = "${pageContext.request.contextPath}/createdoffers?year=${offer.year}&semester=${offer.semester}" >
+					링크 보기 </a> </td>
 				</tr>
 				
 			</c:forEach>

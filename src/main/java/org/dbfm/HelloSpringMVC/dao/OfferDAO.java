@@ -55,12 +55,35 @@ public class OfferDAO {
 						
 						Offer offer = new Offer();
 						offer.setId(rs.getInt("id"));
-						offer.setYear(rs.getInt("year"));
-						offer.setSemester(rs.getInt("semester"));
+						offer.setYear(rs.getString("year"));
+						offer.setSemester(rs.getString("semester"));
 						offer.setCode(rs.getString("code"));
 						offer.setName(rs.getString("name"));
 						offer.setSort(rs.getString("sort"));
-						offer.setCredit(rs.getInt("credit"));
+						offer.setCredit(rs.getString("credit"));
+						
+						return offer;
+					}
+				}
+		);
+	}
+	
+	// 년도와 학기만 뽑아 쓰는 함수
+	public List<Offer> getOffers(String year, String semester) {
+		String sqlStatement = "select * from classesoffers where (year, semester) = (?, ?) ";
+		
+		return jdbcTemplate.query(sqlStatement, new Object[]{year, semester},
+				new RowMapper<Offer>() {
+					public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
+						
+						Offer offer = new Offer();
+						offer.setId(rs.getInt("id"));
+						offer.setYear(rs.getString("year"));
+						offer.setSemester(rs.getString("semester"));
+						offer.setCode(rs.getString("code"));
+						offer.setName(rs.getString("name"));
+						offer.setSort(rs.getString("sort"));
+						offer.setCredit(rs.getString("credit"));
 						
 						return offer;
 					}
@@ -75,7 +98,7 @@ public class OfferDAO {
 				new RowMapper<Offer>() {
 					public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Offer offer = new Offer();
-						offer.setYear(rs.getInt("year"));
+						offer.setYear(rs.getString("year"));
 						
 						return offer;
 					}
@@ -90,9 +113,9 @@ public class OfferDAO {
 				new RowMapper<Offer>() {
 					public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Offer offer = new Offer();
-						offer.setYear(rs.getInt("year"));
-						offer.setSemester(rs.getInt("semester"));
-						offer.setCredit(rs.getInt("credit"));
+						offer.setYear(rs.getString("year"));
+						offer.setSemester(rs.getString("semester"));
+						offer.setCredit(rs.getString("credit"));
 						
 						return offer;
 					}
@@ -109,12 +132,12 @@ public class OfferDAO {
 						
 						Offer offer = new Offer();
 						offer.setId(rs.getInt("id"));
-						offer.setYear(rs.getInt("year"));
-						offer.setSemester(rs.getInt("semester"));
+						offer.setYear(rs.getString("year"));
+						offer.setSemester(rs.getString("semester"));
 						offer.setCode(rs.getString("code"));
 						offer.setName(rs.getString("name"));
 						offer.setSort(rs.getString("sort"));
-						offer.setCredit(rs.getInt("credit"));
+						offer.setCredit(rs.getString("credit"));
 						
 						return offer;
 					}
@@ -124,12 +147,12 @@ public class OfferDAO {
 	
 	public boolean insert(Offer offer) {
 		
-		int year = offer.getYear();
+		String year = offer.getYear();
 		String name = offer.getName();
-		int semester = offer.getSemester();
+		String semester = offer.getSemester();
 		String code = offer.getCode();
 		String sort = offer.getSort();
-		int credit = offer.getCredit();
+		String credit = offer.getCredit();
 		
 		String sqlStatement = "insert into registeredoffers (year, semester, code, name, sort, credit) values (?, ?, ?, ?, ?, ?)";
 		
@@ -139,12 +162,12 @@ public class OfferDAO {
 	public boolean update(Offer offer) {
 		
 		int id = offer.getId();
-		int year = offer.getYear();
+		String year = offer.getYear();
 		String name = offer.getName();
-		int semester = offer.getSemester();
+		String semester = offer.getSemester();
 		String code = offer.getCode();
 		String sort = offer.getSort();
-		int credit = offer.getCredit();
+		String credit = offer.getCredit();
 		
 		String sqlStatement = "update classesoffers set year = ?, semester = ?, code = ?, name = ?, sort = ?, credit = ? where id = ?";
 		

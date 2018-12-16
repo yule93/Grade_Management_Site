@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.*;
 
 @Controller
@@ -18,10 +19,12 @@ public class OfferController {
 
 	@Autowired
 	private OfferService offerservice;
+	private String year = "2019";
+	private String semester = "1";
 	
 	@RequestMapping("/offers")
 	public String showOffers (Model model) {
-		List<Offer> offers = offerservice.getCurrent();
+		List<Offer> offers = offerservice.getCreate(year, semester);
 		model.addAttribute("offers", offers);
 		
 		return "semesterlist";		// view 이름
@@ -34,6 +37,19 @@ public class OfferController {
 		
 		return "offers";		// view 이름
 	}*/
+	
+	@RequestMapping("/createdoffers")
+	public String showCreatedoffers (Model model, HttpServletRequest request) {
+		year = request.getParameter("year");
+		semester = request.getParameter("semester") ;
+		
+		List<Offer> offers = offerservice.getCreate(year, semester);
+		model.addAttribute("offers", offers);
+		
+		System.out.println(year + "년도, " + semester +"학기");
+		
+		return "semesterlist";
+	}
 	
 	@RequestMapping("/createoffer")
 	public String createOffer (Model model) {
