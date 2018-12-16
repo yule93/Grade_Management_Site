@@ -15,7 +15,7 @@
 <body>
 	<table class="formtable">	
 		<tr>
-			<td class ="label1"> <a href = "${pageContext.request.contextPath}/offers"> 학기별 이수 학점 조회</a> </td>
+			<td class ="label1"> <a href = "${pageContext.request.contextPath}/semesterlist"> 학기별 이수 학점 조회</a> </td>
 		</tr>
 		<tr>
 			<td class ="label1"> <a href = "${pageContext.request.contextPath}/createoffer"> 수강 신청하기 </a> </td>

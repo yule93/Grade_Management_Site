@@ -11,7 +11,6 @@
 </head>
 <body>
 
-	<%-- <c:set var="offer" value ="${offers}" /> --%>
 	<table class = "formtable">
 		<tr>
 			<td class = "can"> 년도 </td>
@@ -19,17 +18,15 @@
 			<td class = "can"> 이수 학점 </td>
 			<td class = "can"> 상세학기 </td>
 		</tr>
-				<c:set var = "result" value = ""/>
 			<c:forEach var = "offer" items = "${offers}" >
-				<c:if test =" ${ offer.year eq result } ">
-					<tr>
-						<td class = "can1"> <c:out value = "${offer.year}"> </c:out> </td>
-						<td class = "can1"> 학기 </td>
-						<td class = "can1"> 이수 학점 </td>
-						<td class = "can1"> <a href = "${pageContext.request.contextPath}/semesterlist"> 링크 보기 </a> </td>
-					</tr>
-				</c:if>
-				<c:set var = "result" value ="${offer.year}" />
+			
+				<tr>
+					<td class = "can1"> <c:out value = "${offer.year}"> </c:out> </td>
+					<td class = "can1"> <c:out value = "${offer.semester}"/> </td>
+					<td class = "can1"> <c:out value = "${offer.credit}"/> </td>
+					<td class = "can1"> <a href = "${pageContext.request.contextPath}/offers"> 링크 보기 </a> </td>
+				</tr>
+				
 			</c:forEach>
 		
 	</table>

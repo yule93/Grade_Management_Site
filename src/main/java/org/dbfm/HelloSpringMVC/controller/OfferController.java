@@ -24,16 +24,16 @@ public class OfferController {
 		List<Offer> offers = offerservice.getCurrent();
 		model.addAttribute("offers", offers);
 		
-		return "offers";		// view 이름
+		return "semesterlist";		// view 이름
 	}
 	
-	@RequestMapping("/yearoffer")
+	/*@RequestMapping("/yearoffer")
 	public String showYears (Model model) {
 		List<Offer> offers = offerservice.getYear();
 		model.addAttribute("year", offers);
 		
 		return "offers";		// view 이름
-	}
+	}*/
 	
 	@RequestMapping("/createoffer")
 	public String createOffer (Model model) {
@@ -59,11 +59,12 @@ public class OfferController {
 		return "offercreated";		// view 이름
 	}
 
-	@RequestMapping("/semesterlist")
+	@RequestMapping("/semesterlist")			// 학기당 들은 수강 학점 표기 컨트롤러
 	public String semesterList (Model model) {
-		model.addAttribute("offer", new Offer());
+		List<Offer> offers = offerservice.getSemester();
+		model.addAttribute("offers", offers);
 		
-		return "semesterlist";		// view 이름
+		return "offers";		// view 이름
 	}
 	
 	@RequestMapping("/registered")

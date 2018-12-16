@@ -11,7 +11,7 @@
 		href="${pageContext.request.contextPath }/resources/css/main.css">
 </head>
 <body>
-
+	<h2> 신청한 과목  </h2>
 	<table class = "formtable1">
 		<tr>
 			<td class = "can"> 연도 </td>

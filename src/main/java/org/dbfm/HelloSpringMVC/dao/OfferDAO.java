@@ -83,6 +83,23 @@ public class OfferDAO {
 		);
 	}
 	
+	public List<Offer> getSemester() {
+		String sqlStatement = "select year, semester, credit from semesteroffers";
+		
+		return jdbcTemplate.query(sqlStatement,
+				new RowMapper<Offer>() {
+					public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Offer offer = new Offer();
+						offer.setYear(rs.getInt("year"));
+						offer.setSemester(rs.getInt("semester"));
+						offer.setCredit(rs.getInt("credit"));
+						
+						return offer;
+					}
+				}
+		);
+	}
+	
 	public List<Offer> getRegisteredOffers() {
 		String sqlStatement = "select * from registeredoffers";
 		
