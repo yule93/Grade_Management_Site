@@ -10,7 +10,7 @@
 
 	${offer.name} 가 새로운 제안을 했습니다. 감사합니다. </br>
 	
-	<a href="${pageContext.request.contextPath}/offers"> Click here to view current offers </a>
+	<a href="${pageContext.request.contextPath}/"> Click here to view current offers </a>
 
 </body>
 </html>

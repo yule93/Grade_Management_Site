@@ -131,7 +131,7 @@ public class OfferDAO {
 		String sort = offer.getSort();
 		int credit = offer.getCredit();
 		
-		String sqlStatement = "insert into classesoffers (year, semester, code, name, sort, credit) values (?, ?, ?, ?, ?, ?)";
+		String sqlStatement = "insert into registeredoffers (year, semester, code, name, sort, credit) values (?, ?, ?, ?, ?, ?)";
 		
 		return (jdbcTemplate.update(sqlStatement, new Object[] {year, semester, code, name, sort, credit}) == 1);
 	}

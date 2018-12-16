@@ -17,17 +17,20 @@ import lombok.ToString;
 public class Offer {
 	
 	private int id;
+	
+	@NotEmpty(message = "연도 칸은 비어선 안 됩니다.")
 	private int year;
+	
+	@NotEmpty(message = "학기 칸은 비어선 안 됩니다.")
 	private int semester;
 	private String code;
 	
-	@Size(min=2, max=100, message="Name must be between 2 and 100 chars")
-	@NotEmpty(message = "The name cannot be empty")
+	@Size(min=2, max=100, message="적어도 두 글자 이상 적어야 합니다.")
+	@NotEmpty(message = "이름 칸은 비어선 안 됩니다.")
 	private String name;
 	
 	private String sort;
-	
-	@Size(max = 1, message="학점은 1자리 수 입니다.")
+
 	private int credit;
 	
 	// 아래 field들은 필요없음
